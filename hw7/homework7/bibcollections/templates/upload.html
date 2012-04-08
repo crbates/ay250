@@ -1,0 +1,13 @@
+<h1>Upload A .bib file</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.docfile.help_text }}
+    {{ form.docfile.label_tag }}
+    {{ form.docfile.errors }}
+    {{ form.docfile }}
+    Collection Title: <input type="text" name="name" />
+    <input type="submit" value="Upload" />
+</form>
+
+<a href=/>Back to Main</a>

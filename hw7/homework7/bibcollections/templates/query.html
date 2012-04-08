@@ -1,0 +1,38 @@
+{% if db %}
+{{ db}}
+{% else %}
+A database is present. You can query it below.
+{% endif %}
+<br>
+Use SQL query syntax to enter the query string that follow the "WHERE".<br>
+Column names are "tag", "volume", "year", "journal", "title", "collection_name".<br>
+Make sure to explicitly put strings in quotes.
+<br>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+Query: <input type="text" name="cmd" /> <input type="submit" value="submit"/>
+</form>
+
+{% if error %}
+{{ error }}
+{% endif %}
+<br>
+
+{% if items %}
+    <u1>
+    {% for item in items %}
+        <li><pre>Reference Tag: {{ item.tag }} 
+        Author: {{ item.author }}
+        Journal: {{ item.journal }}
+        Volume: {{ item.volume }}
+        Pages: {{ item.pages }}
+        Year: {{ item.year }}
+        Title: {{ item.title }}
+        Collection:  {{ item.collection_name }}       
+        </pre>
+        </li>
+    {% endfor %}
+    </u1>    
+{% endif %}
+
+<a href=/>Back to Main</a>

@@ -1,0 +1,3 @@
+AY250 Homework1 README
+
+This zip file contains the solutions for AY250 homework 1. For part 1 the old plot is named oldplot.pdf and the new plot is mplplot.pdf. The python script used to create the new plot is called part1.py. Both parts 2 and 3 can be run interactively or standalone as a script. Part 2 reproduces the stocks.png figure. Part 3 creates a figure with 4 plots plotting different dimensions of a single dataset. By clicking and dragging in the bottom right plot(x vs. s) a rectangle is created. The points in the other plots corresponding to the points within the rectangle are highlighted. The rectangle can be deleted by mousing over the rectangle and hitting the d key. 

@@ -1,0 +1,14 @@
+<h1>Article Database</h1>
+{% if db %}
+{{ db}}
+{% endif %}
+{% if coll %}
+<ul>
+{% for item in coll %}
+    <li>{{ item.name }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+<br>
+<a href=upload>Add a collection</a>
+<a href=query>Query the Database</a>
