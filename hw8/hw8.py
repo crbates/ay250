@@ -21,7 +21,7 @@ results = parser.parse_args()
 if results.init:
     hw5.hw5.initdb()
     
-# select the iformation for the candidate of interest     
+# select the information for the candidate of interest     
 connection = sqlite3.connect("elections.db")
 cursor = connection.cursor()
 sql_cmd = """SELECT predictions.date, predictions.price from predictions left join candidates on
@@ -33,6 +33,7 @@ dprice = []
 ddates = []
 total = []
 finaldates = []
+#iterate over the requested data to find the requested date
 for item in result:
     dprice.append(item[1])
     ddates.append(item[0])
@@ -40,15 +41,16 @@ for item in result:
     if item[0] in results.date:
         price = item[1]
         print "Candidate: ", results.candidate, " Date: ", item[0], " probability: ", item[1], "%"
-#sum the probabilities for all shared dates    
+
+#check if a plot it requested    
 if results.plot:
-    for index, date in enumerate(ddates):
-        total.append(dprice[index])
+    #change the dates to datetime objects for plotting
+    for date in ddates:
         finaldates.append(datetime.datetime.strptime(date,"%Y-%m-%d"))
     #plot the result
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.plot(finaldates,total)
+    ax.plot(finaldates,dprice)
     yearsFmt = mdates.DateFormatter('%m-%d-%Y')
     ax.xaxis.set_major_formatter(yearsFmt)
     fig.autofmt_xdate()
