@@ -1,0 +1,71 @@
+commit 28d421b77c2a1610d019367ff850d55d133922b2
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Sun Apr 8 16:02:06 2012 -0700
+
+    add energy calibration to python backend
+
+commit 70a7518669c8d9167ed405b0e2f4747b34049f14
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Sun Apr 8 15:30:58 2012 -0700
+
+    add energy information to plot
+
+commit bbad9d2669abe0a691956437ba74901e0718c503
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Sun Apr 8 15:23:29 2012 -0700
+
+    add more energy calibration inputs to web form
+
+commit 582d30dc5a23a4ddea60260d002f99bb91d90d15
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Fri Apr 6 23:48:27 2012 -0700
+
+    added dynamic input form to interface
+
+commit 0a5f68fcb6bd91652271629e15a04607e5a68e4e
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Fri Apr 6 22:34:24 2012 -0700
+
+    added selection ability to interface
+
+commit 49e2bae68cb65d994bdac0d0cf8ffcb5134dafd1
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Fri Apr 6 19:51:44 2012 -0700
+
+    added livetime data to web interface
+
+commit a01da1ae836739832499eef49cba55662809ca99
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Thu Apr 5 17:11:57 2012 -0700
+
+    Removed plot auto-update feature
+
+commit 893e3c33c115faab2c9f827082f2c8b4a44fd7b5
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Thu Apr 5 16:26:00 2012 -0700
+
+    Updated server method to work properly
+
+commit da89a21ee38c90323023fcad66973fc6d6cfe437
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Thu Apr 5 16:05:38 2012 -0700
+
+    Updated server method to work properly
+
+commit 3ee3445eaf7ff0b35fa0d4b82810e643fc63ba09
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Thu Apr 5 15:50:03 2012 -0700
+
+    Add upload method to server
+
+commit 2c9138b49b40df460b800d20f2ee1d1e9d58d9cb
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Thu Apr 5 15:40:13 2012 -0700
+
+    Add docment upload form to html file
+
+commit ce5dad915742543eda40e1834214dc28c5ee0e00
+Author: Cameron Bates <cameron.r.bates@gmail.com>
+Date:   Thu Apr 5 15:25:31 2012 -0700
+
+    Initial commit of cherrypy+ajax+flot project
