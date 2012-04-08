@@ -39,6 +39,7 @@ def getdata(name):
     #spoof the mozilla browser in order to get the page
     opener = urllib2.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+    print name
     infile = opener.open('http://en.wikipedia.org/w/index.php?title='+str(name)+"&printable=yes")
     page = infile.read()
     # parse the page using beautifulsoup and select the information box
@@ -151,6 +152,9 @@ def getdata(name):
             f.close()
             party = "Republican"
     #return data
+    if "New York" in city:
+        state = "New York"
+        city = "New York"
     return city, state, party, birthday, filename
     
 
@@ -198,7 +202,7 @@ def parsecandidatewiki(cursor):
         firstname = name.split("_")[0]
         lastname = name.split("_")[1]
         name = firstname+"_"+lastname        
-        if name not in names:
+        if name not in names and "Any_other" not in name:
             names.append(name)
             city, state, party, birthday, filename = getdata(name)
             mdline = getlatitude(state)
@@ -214,17 +218,23 @@ def getlatitude(state):
     This function uses the yahoo API to determine whether a location that is
     entered as a string is north or south of the mason dixon line.
     '''
-    infile = urllib2.urlopen("http://where.yahooapis.com/geocode?q="+string.replace(state," ","_")+"&appid=CB84ju42")
-    page = infile.read()
-    soup = bs(page)    
-    res = str(soup.latitude)
-    res = res.split("latitude>")[1]
-    res = res.split("</")[0]
-    if float(res) > 39.722201:
-        return 1
+    if state is not None:
+        try:
+            infile = urllib2.urlopen("http://where.yahooapis.com/geocode?q="+string.replace(state," ","_")+"&appid=CB84ju42")
+            page = infile.read()
+            soup = bs(page)    
+            res = str(soup.latitude)
+            res = res.split("latitude>")[1]
+            res = res.split("</")[0]
+            if float(res) > 39.722201:
+                return 1
+            else:
+                return 0
+        except:
+            print "not a state: ", state
+            return 0                                           
     else:
-        return 0                                           
-            
+        return 0        
         
 def loadpredictiondata():
     '''
@@ -256,23 +266,26 @@ def loadpredictiondata():
         sql_cmd = """SELECT race_id FROM races where name like """ + str(race) 
         cursor.execute(sql_cmd)
         raceid = cursor.fetchall()
+        #print raceid
         name = firstname+"_"+lastname
         #determine candidate_id
         sql_cmd = """SELECT candidate_id FROM candidates where name like """ + "\"" +str(name) + "\""
         cursor.execute(sql_cmd)
         candidateid = cursor.fetchall()
-        #insert data into database
-        for row in marketdata:
-            date = string.lstrip(row[0],'\"')
-            year = string.rstrip(row[1],'\"')
-            date = datetime.datetime.strptime(date+year,'%b %d %Y')            
-            date = date.strftime('%Y-%m-%d')             
-            price = row[-2]
-            volume = row[-1]
-            val = (candidateid[0][0],raceid[0][0],date,price,volume)
-            sql_cmd =  """INSERT INTO predictions(candidate_id, race_id, date, price, volume) values 
-                        (?,?,?,?,?)"""
-            cursor.execute(sql_cmd,val)
+        #print candidateid
+        if len(candidateid) > 0:            
+            #insert data into database
+            for row in marketdata:
+                date = string.lstrip(row[0],'\"')
+                year = string.rstrip(row[1],'\"')
+                date = datetime.datetime.strptime(date+year,'%b %d %Y')            
+                date = date.strftime('%Y-%m-%d')             
+                price = row[-2]
+                volume = row[-1]
+                val = (candidateid[0][0],raceid[0][0],date,price,volume)
+                sql_cmd =  """INSERT INTO predictions(candidate_id, race_id, date, price, volume) values 
+                            (?,?,?,?,?)"""
+                cursor.execute(sql_cmd,val)
     connection.commit()    
     cursor.close()
             
