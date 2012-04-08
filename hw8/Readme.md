@@ -12,5 +12,5 @@ The hw8.py file in this folder can be run with the following arguments:
   -p            plot results  
   -i            initialize database  
 
-The database should already be ready assuming elections.db is not deleted. 
+The database should already be ready assuming elections.db has not been deleted. In case it has been deleted the -i flag can be used to run the database initialization routines from the homework 5 folder. Two functions  were added to the hw5.py file(selectcandidatedata and plotprobability) to retrieve the requested data from the database and plot it.
 
