@@ -4,6 +4,9 @@ Author: Cameron Bates
 ## Part 1
 The changelog.txt file contains the commit log from a project I recently started.
 
+## Part 2
+The github repository can be found [here](https://github.com/crbates/ay250)
+
 ## Part 3
 The hw8.py file in this folder can be run with the following arguments:  
   -c CANDIDATE  Candidates name default:Obama  
