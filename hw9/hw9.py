@@ -96,7 +96,8 @@ if __name__ == '__main__':
     '''
     import numpy as np
     #sizes to use
-    n = [25,50,300,1000,5000,20000,100000,1000000]#np.logspace(2,7,8)
+    n = [50,300,1000,5000,20000,100000,1000000,10000000]#np.logspace(2,7,8)
+    n = np.array(n,dtype=int)
     #initialize result arrays
     mp = np.zeros(8)
     serialr = np.zeros(8)
@@ -108,6 +109,7 @@ if __name__ == '__main__':
         ipy[index] = ipcluster(item)
     for index, item in enumerate(n):
         serialr[index] = serialpi(item)
+        
     import matplotlib.pyplot as plt
     #calculate the darts per second for each method
     dpsmp = np.array(n)/mp
@@ -136,7 +138,7 @@ if __name__ == '__main__':
     ax = plt.axis()
     nx = []
     nx.append(ax[0])
-    nx.append(2E6)
+    nx.append(2E7)
     nx.append(ax[2])
     nx.append(ax[3])
     plt.axis(nx)
