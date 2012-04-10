@@ -1,4 +1,4 @@
-#Homework 9 AY 250 Sprign 2012  
+#Homework 9 AY 250 Spring 2012  
 Author: Cameron Bates
 
 Prior to running the hw9.py script start an ipython cluster with the desired
